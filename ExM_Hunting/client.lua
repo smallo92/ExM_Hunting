@@ -257,22 +257,37 @@ end)
 CreateThread(function()
 	AddTextEntry("HuntingMeat", Config.Text.MeatStoreBlip)
     AddTextEntry("HuntingPelt", Config.Text.PeltStoreBlip)
+    AddTextEntry("HuntingQuestionable", Config.Text.QuestionableStoreBlip)
     
-	local meatBlip = AddBlipForCoord(Config.MeatSellPoint.coords)
-    SetBlipSprite(meatBlip, 141)
-    SetBlipScale(meatBlip, 0.8)
-    SetBlipAsShortRange(meatBlip,true)
-    SetBlipColour(meatBlip, 66)
-    BeginTextCommandSetBlipName("HuntingMeat")
-    EndTextCommandSetBlipName(meatBlip)
-
-    local peltBlip = AddBlipForCoord(Config.PeltSellPoint.coords)
-    SetBlipSprite(peltBlip, 141)
-    SetBlipScale(peltBlip, 0.8)
-    SetBlipAsShortRange(peltBlip,true)
-    SetBlipColour(peltBlip, 66)
-    BeginTextCommandSetBlipName("HuntingPelt")
-    EndTextCommandSetBlipName(peltBlip)
+	if Config.MeatSellPoint.showMapBlip then
+		local meatBlip = AddBlipForCoord(Config.MeatSellPoint.coords)
+		SetBlipSprite(meatBlip, 141)
+		SetBlipScale(meatBlip, 0.8)
+		SetBlipAsShortRange(meatBlip,true)
+		SetBlipColour(meatBlip, 66)
+		BeginTextCommandSetBlipName("HuntingMeat")
+		EndTextCommandSetBlipName(meatBlip)
+	end
+	
+	if Config.PeltSellPoint.showMapBlip then
+		local peltBlip = AddBlipForCoord(Config.PeltSellPoint.coords)
+		SetBlipSprite(peltBlip, 141)
+		SetBlipScale(peltBlip, 0.8)
+		SetBlipAsShortRange(peltBlip,true)
+		SetBlipColour(peltBlip, 66)
+		BeginTextCommandSetBlipName("HuntingPelt")
+		EndTextCommandSetBlipName(peltBlip)
+	end
+	
+    if Config.QuestionableSellPoint.showMapBlip then
+		local questionableBlip = AddBlipForCoord(Config.QuestionableSellPoint.coords)
+		SetBlipSprite(questionableBlip, 141)
+		SetBlipScale(questionableBlip, 0.8)
+		SetBlipAsShortRange(questionableBlip,true)
+		SetBlipColour(questionableBlip, 66)
+		BeginTextCommandSetBlipName("HuntingQuestionable")
+		EndTextCommandSetBlipName(questionableBlip)
+	end
 end)
 
 function ButtonMessage(text)

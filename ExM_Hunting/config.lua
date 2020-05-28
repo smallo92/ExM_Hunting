@@ -5,7 +5,8 @@ Config.MeatSellPoint = {
 	markerType = 1,
 	markerColours = {r = 255, g = 0, b = 0, a = 100},
 	markerScale = vec(1.5, 1.5, 0.6),
-	markerRange = 15.0
+	markerRange = 15.0,
+	showMapBlip = true
 }
 
 Config.PeltSellPoint = {
@@ -13,7 +14,8 @@ Config.PeltSellPoint = {
 	markerType = 1,
 	markerColours = {r = 255, g = 0, b = 0, a = 100},
 	markerScale = vec(1.5, 1.5, 0.6),
-	markerRange = 50.0
+	markerRange = 50.0,
+	showMapBlip = true
 }
 
 Config.QuestionableSellPoint = {
@@ -21,7 +23,8 @@ Config.QuestionableSellPoint = {
 	markerType = 1,
 	markerColours = {r = 255, g = 0, b = 0, a = 100},
 	markerScale = vec(1.5, 1.5, 0.6),
-	markerRange = 25.0
+	markerRange = 25.0,
+	showMapBlip = false
 }
 
 Config.InteractButton = 38 -- E key to interact with markers and animal
@@ -35,6 +38,7 @@ Config.Text = {
 	["QuestionableStoreOpen"] = "Open Questionable Store",
 	["MeatStoreBlip"] = "Hunting Meat Sales",
 	["PeltStoreBlip"] = "Hunting Pelt Sales",
+	["QuestionableStoreBlip"] = "Questionable Items Sales",
 	["MeatStoreTitle"] = "Sell your Meat",
 	["PeltStoreTitle"] = "Sell your Pelts",
 	["QuestionableStoreTitle"] = "Sell your Items",
