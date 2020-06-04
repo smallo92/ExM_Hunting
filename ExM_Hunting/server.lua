@@ -7,16 +7,23 @@ AddEventHandler('ExM_Hunting:addItem', function(itemName, amount, friendlyName)
     local xPlayer = ExM.GetPlayerFromId(plySource)
 	local sourceItem = xPlayer.getInventoryItem(iName)
 
-    if not xPlayer.canCarryItem(iName, iAmount) then
-        local difference = sourceItem.limit - sourceItem.count
-        if difference == 0 then
-            TriggerClientEvent('esx:showNotification', plySource, string.format(Config.Text.MaxLimit, fName))
-        else
-            xPlayer.addInventoryItem(iName, difference)
-        end
-    else
-        xPlayer.addInventoryItem(iName, iAmount)
-    end
+	if Config.QuestionableSell[iName] or Config.MeatSell[iName] or Config.PeltSell[iName] then
+		if not xPlayer.canCarryItem(iName, iAmount) then
+			local difference = sourceItem.limit - sourceItem.count
+			if difference == 0 then
+				TriggerClientEvent('esx:showNotification', plySource, string.format(Config.Text.MaxLimit, fName))
+			else
+				xPlayer.addInventoryItem(iName, difference)
+			end
+		else
+			xPlayer.addInventoryItem(iName, iAmount)
+		end
+	else
+		-- The user is probably cheating by trying to give themselves some random item unrelated to hunting, you could put some anti-cheat captures here.
+		-- Uncomment the below line if you'd like to be notified of this in your server console, you could also trigger a ban here if you wanted to.
+		
+		-- print("ExM_Hunting: ^3" .. GetPlayerName(plySource) .. "^r has attempted to give themselves an item not related to hunting ^4(" .. iName .. ")^r")
+	end
 end)
 
 ExM.RegisterServerCallback('ExM_Hunting:getPelt', function(source, cb)
